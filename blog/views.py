@@ -38,3 +38,10 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
+
+from rest_framework import viewsets
+from .serializers import PostSerializer
+
+class IntruderImage(viewsets.ModelViewSet):
+      queryset = Post.objects.all()
+      serializer_class = PostSerializer
